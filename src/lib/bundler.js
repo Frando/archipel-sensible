@@ -36,7 +36,7 @@ function bundle (opts) {
   }
 }
 
-module.exports = { bundle, config }
+module.exports = { bundle, config, resolveApp }
 
 function resolveApp (subdir) {
   return path.resolve(path.join('.', subdir))
@@ -46,14 +46,14 @@ function config (opts) {
   opts = opts || {}
   const hotConf = 'webpack-hot-middleware/client?path=/__webpack_hmr'
   const entry = opts.entry || resolveApp('src/app/index.js')
-
+  const output = opts.output || resolveApp('build/dev')
   return {
 //    entry: opts.entry || resolveApp('src/app/index.js'),
     entry: {
       main: [entry, hotConf]
     },
     output: {
-      path: opts.output || resolveApp('.', 'dist'),
+      path: output,
       filename: 'app.js',
       publicPath: '/',
     },
@@ -63,7 +63,7 @@ function config (opts) {
     devtool: 'cheap-eval-source-map',
     
     plugins: [
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({ alwaysWriteToDisk: false }),
       // new LiveReloadPlugin(),
       new webpack.HotModuleReplacementPlugin()
 
