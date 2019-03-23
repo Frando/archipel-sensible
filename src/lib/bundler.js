@@ -9,13 +9,14 @@ const fs = require('fs')
 function bundle (opts) {
   console.log('>>> start bundle build')
   const compiler = webpack(config(opts))
-  const watching = compiler.watch({
-    // Example watchOptions
-    aggregateTimeout: 300,
-    ignored: /node_modules/,
-    poll: true
-  }, (err, stats) => {
-    // Print watch/build result here...
+  //const watching = compiler.watch({
+  //  aggregateTimeout: 300,
+  //  ignored: /node_modules/,
+  //  poll: true
+  //}, (err, stats) => printStats(stats)}
+  compiler.run((err, stats) => printStats(stats))
+  
+  function printStats (stats) {
     print('build finished')
     print('time: %ss', (stats.endTime - stats.startTime) / 1000)
     if (stats.hasErrors()) {
@@ -24,7 +25,7 @@ function bundle (opts) {
     } else {
       print('no errors')
     }
-  })
+  }
 
   function print (msg, ...args) {
     let str = '>>> ' + msg
@@ -33,6 +34,10 @@ function bundle (opts) {
 }
 
 module.exports = bundle
+
+function resolveApp (subdir) {
+  return path.resolve(path.join('.', subdir))
+}
 
 function config (opts) {
   opts = opts || {}
@@ -49,22 +54,18 @@ function config (opts) {
       new LiveReloadPlugin()
     ],
     module: {
-      rules: [
-        rules: [
-          {
-            test: /\.ext$/,
-            use: ['cache-loader', ...loaders],
-            include: path.resolve('src/app'),
-          },
-        ],
+      rules: [    
         {
           test: /\.js$/,
-          use: {
-            loader: '@sucrase/webpack-loader',
-            options: {
-              transforms: ['jsx']
+          use: 
+            {
+              loader: '@sucrase/webpack-loader',
+              include: resolveApp('src/app'),
+              options: {
+                transforms: ['jsx']
+              }
             }
-          }
+          
         }
       ]
     }

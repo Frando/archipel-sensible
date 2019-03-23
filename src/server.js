@@ -17,6 +17,7 @@ const makeServer = require('./lib/http-server')
 
 if (process.env.NODE_ENV === 'development') {
   bundler({ entry: './src/app/index.js' })
+  
 }
 
 // var childProcess = require('child_process').fork(__dirname + '/lib/bundler')

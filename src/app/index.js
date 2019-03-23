@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function render (el) {
   ReactDOM.render(
-    <h1>Hello, world! yes foo</h1>,
+    <h1>Hello, world! yes fooasd</h1>,
     el
   );
 }
