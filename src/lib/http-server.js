@@ -42,6 +42,12 @@ class HttpServer {
       // prefix: '/public/', // optional: default '/'
     })
   }
+  
+  devtools () {
+    const fastifyWebpackHmr = require('fastify-webpack-hmr')
+    const { config } = require('./bundler')
+    this.fastify.register(fastifyWebpackHmr, { config: config() })
+  }
 
   get() {}
 

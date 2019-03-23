@@ -1,7 +1,7 @@
 // require('module-alias/register')
 console.log('go')
 // const server = require('./server.js')
-const bundler = require('./lib/bundler')
+const { bundle } = require('./lib/bundler')
 const makeServer = require('./lib/http-server')
 
 // var http = require('http')
@@ -16,7 +16,8 @@ const makeServer = require('./lib/http-server')
 //   .listen(8080) //the server object listens on port 8080
 
 if (process.env.NODE_ENV === 'development') {
-  bundler({ entry: './src/app/index.js' })
+  bundle({ entry: './src/app/index.js' })
+  server.devtools()
   
 }
 

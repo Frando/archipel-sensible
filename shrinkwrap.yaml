@@ -5,6 +5,7 @@ dependencies:
   discovery-swarm-stream: 1.1.5
   fastify: 2.1.0
   fastify-static: 2.3.4
+  fastify-webpack-hmr: 2.0.1
   fastify-websocket: 0.3.0
   html-webpack-plugin: 3.2.0
   hyperdb: 3.5.0
@@ -223,6 +224,19 @@ packages:
     dev: true
     resolution:
       integrity: sha1-w2rsy6VjuJzrVW82kPCx2eNUf38=
+  /ansi-colors/3.2.4:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
+  /ansi-html/0.0.7:
+    dev: false
+    engines:
+      '0': node >= 0.8.0
+    hasBin: true
+    resolution:
+      integrity: sha1-gTWEAhliqenm/QOflA0S9WynhZ4=
   /ansi-regex/2.1.1:
     dev: false
     engines:
@@ -1407,6 +1421,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-lOdrX3j2FHGeeHrQ10xx3z1s3I7Aq0NS9dY1N9OBKIOX5O8bZd5QkBFEAXms4GhHxwcRIoOzV8fLcxuIdyzTdQ==
+  /fastify-webpack-hmr/2.0.1:
+    dependencies:
+      fastify-plugin: 1.5.0
+      webpack: /webpack/4.29.6/webpack@4.29.6
+      webpack-dev-middleware: /webpack-dev-middleware/3.6.1/webpack@4.29.6
+      webpack-hot-middleware: 2.24.3
+    dev: false
+    resolution:
+      integrity: sha512-D+15N9mrsp90WJaRgQMaa0KRna6y33uYUY3VSRo/lPcDInvWhKbNDxkJCuv/RI5p4DkdQtUK7LXmsBDl6MsAUA==
   /fastify-websocket/0.3.0:
     dependencies:
       fastify-plugin: 1.5.0
@@ -1711,6 +1734,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
+  /html-entities/1.2.1:
+    dev: false
+    engines:
+      '0': node >= 0.4.0
+    resolution:
+      integrity: sha1-DfKTUfByEWNRXfueVUPl9u7VFi8=
   /html-minifier/3.5.21:
     dependencies:
       camel-case: 3.0.0
@@ -2452,6 +2481,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-KI1+qOZu5DcW6wayYHSzR/tXKCDC5Om4s1z2QJjDULzLcmf3DvzS7oluY4HCTrc+9FiKmWUgeNLg7W3uIQvxtQ==
+  /mime/2.4.0:
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-ikBcWwyqXQSHKtciCcctu9YfPbFYZ4+gbHEmE0Q8jzcTYQg5dHCr3g2wwAZjPoJfQVXZq6KXAjpXOTf5/cjT7w==
   /minimalistic-assert/1.0.1:
     dev: false
     resolution:
@@ -3717,6 +3753,25 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-GOK7q85oAb/5kE12fMuLdn2btOS9OBZn4VsecpHDywoUC/jLhSAKOiYo0ezx7ss2EXPMzyEWFoE0s1WLE+4+oA==
+  /terser-webpack-plugin/1.2.3/webpack@4.29.6:
+    dependencies:
+      cacache: 11.3.2
+      find-cache-dir: 2.1.0
+      schema-utils: 1.0.0
+      serialize-javascript: 1.6.1
+      source-map: 0.6.1
+      terser: 3.17.0
+      webpack: /webpack/4.29.6/webpack@4.29.6
+      webpack-sources: 1.3.0
+      worker-farm: 1.6.0
+    dev: false
+    engines:
+      node: '>= 6.9.0'
+    id: registry.npmjs.org/terser-webpack-plugin/1.2.3
+    peerDependencies:
+      webpack: ^4.0.0
+    resolution:
+      integrity: sha512-GOK7q85oAb/5kE12fMuLdn2btOS9OBZn4VsecpHDywoUC/jLhSAKOiYo0ezx7ss2EXPMzyEWFoE0s1WLE+4+oA==
   /terser/3.17.0:
     dependencies:
       commander: 2.19.0
@@ -4026,6 +4081,11 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-vRAKaS8WcYNgzbxyH2LdheqgL4sQLis8LXl7r/mN+O4mpWlUpoCsTtietxepLrft2q0TFA2gaIvSWN1iRkzW/w==
+  /uuid/3.3.2:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
   /varint/3.0.1:
     dev: false
     resolution:
@@ -4052,6 +4112,30 @@ packages:
     dev: false
     resolution:
       integrity: sha512-i6dHe3EyLjMmDlU1/bGQpEw25XSjkJULPuAVKCbNRefQVq48yXKUpwg538F7AZTf9kyr57zj++pQFltUa5H7yA==
+  /webpack-dev-middleware/3.6.1/webpack@4.29.6:
+    dependencies:
+      memory-fs: 0.4.1
+      mime: 2.4.0
+      range-parser: 1.2.0
+      webpack: /webpack/4.29.6/webpack@4.29.6
+      webpack-log: 2.0.0
+    dev: false
+    engines:
+      node: '>= 6'
+    id: registry.npmjs.org/webpack-dev-middleware/3.6.1
+    peerDependencies:
+      webpack: ^4.0.0
+    resolution:
+      integrity: sha512-XQmemun8QJexMEvNFbD2BIg4eSKrmSIMrTfnl2nql2Sc6OGAYFyb8rwuYrCjl/IiEYYuyTEiimMscu7EXji/Dw==
+  /webpack-hot-middleware/2.24.3:
+    dependencies:
+      ansi-html: 0.0.7
+      html-entities: 1.2.1
+      querystring: 0.2.0
+      strip-ansi: 3.0.1
+    dev: false
+    resolution:
+      integrity: sha512-pPlmcdoR2Fn6UhYjAhp1g/IJy1Yc9hD+T6O9mjRcWV2pFbBjIFoJXhP0CoD0xPOhWJuWXuZXGBga9ybbOdzXpg==
   /webpack-livereload-plugin/2.2.0:
     dependencies:
       portfinder: 1.0.20
@@ -4059,6 +4143,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sx9xA5mHoNOUgLQI0PmXT3KV9ecsVmUaTgr+fsoL69qAOHw/7VzkL1+ZMDQ8n0dPbWounswK6cBRSgMod7Nhgg==
+  /webpack-log/2.0.0:
+    dependencies:
+      ansi-colors: 3.2.4
+      uuid: 3.3.2
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-cX8G2vR/85UYG59FgkoMamwHUIkSSlV3bBMRsbxVXVUk2j6NleCKjQ/WE9eYg9WY4w25O9w8wKP4rzNZFmUcUg==
   /webpack-sources/1.3.0:
     dependencies:
       source-list-map: 2.0.1
@@ -4096,6 +4189,39 @@ packages:
     engines:
       node: '>=6.11.5'
     hasBin: true
+    resolution:
+      integrity: sha512-MwBwpiE1BQpMDkbnUUaW6K8RFZjljJHArC6tWQJoFm0oQtfoSebtg4Y7/QHnJ/SddtjYLHaKGX64CFjG5rehJw==
+  /webpack/4.29.6/webpack@4.29.6:
+    dependencies:
+      '@webassemblyjs/ast': 1.8.5
+      '@webassemblyjs/helper-module-context': 1.8.5
+      '@webassemblyjs/wasm-edit': 1.8.5
+      '@webassemblyjs/wasm-parser': 1.8.5
+      acorn: 6.1.1
+      acorn-dynamic-import: /acorn-dynamic-import/4.0.0/acorn@6.1.1
+      ajv: 6.10.0
+      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
+      chrome-trace-event: 1.0.0
+      enhanced-resolve: 4.1.0
+      eslint-scope: 4.0.3
+      json-parse-better-errors: 1.0.2
+      loader-runner: 2.4.0
+      loader-utils: 1.2.3
+      memory-fs: 0.4.1
+      micromatch: 3.1.10
+      mkdirp: 0.5.1
+      neo-async: 2.6.0
+      node-libs-browser: 2.2.0
+      schema-utils: 1.0.0
+      tapable: 1.1.1
+      terser-webpack-plugin: /terser-webpack-plugin/1.2.3/webpack@4.29.6
+      watchpack: 1.6.0
+      webpack-sources: 1.3.0
+    dev: false
+    engines:
+      node: '>=6.11.5'
+    hasBin: true
+    id: registry.npmjs.org/webpack/4.29.6
     resolution:
       integrity: sha512-MwBwpiE1BQpMDkbnUUaW6K8RFZjljJHArC6tWQJoFm0oQtfoSebtg4Y7/QHnJ/SddtjYLHaKGX64CFjG5rehJw==
   /websocket-driver/0.7.0:
@@ -4209,6 +4335,7 @@ specifiers:
   discovery-swarm-stream: 1.1.5
   fastify: 2.1.0
   fastify-static: 2.3.4
+  fastify-webpack-hmr: ^2.0.1
   fastify-websocket: 0.3.0
   html-webpack-plugin: 3.2.0
   hyperdb: 3.5.0

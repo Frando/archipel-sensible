@@ -9,12 +9,15 @@ const fs = require('fs')
 function bundle (opts) {
   console.log('>>> start bundle build')
   const compiler = webpack(config(opts))
-  //const watching = compiler.watch({
-  //  aggregateTimeout: 300,
-  //  ignored: /node_modules/,
-  //  poll: true
-  //}, (err, stats) => printStats(stats)}
-  compiler.run((err, stats) => printStats(stats))
+  if (opts.watch) {
+    const watching = compiler.watch({
+      aggregateTimeout: 300,
+      ignored: /node_modules/,
+      poll: true
+    }, (err, stats) => printStats(stats))
+  } else {
+    compiler.run((err, stats) => printStats(stats))
+  }
   
   function printStats (stats) {
     print('build finished')
@@ -33,7 +36,7 @@ function bundle (opts) {
   }
 }
 
-module.exports = bundle
+module.exports = { bundle, config }
 
 function resolveApp (subdir) {
   return path.resolve(path.join('.', subdir))
@@ -43,10 +46,10 @@ function config (opts) {
   opts = opts || {}
 
   return {
-    entry: opts.entry || path.resolve(path.join('.', 'src/app/index.js')),
+    entry: opts.entry || resolveApp('src/app/index.js'),
     mode: 'production',
     output: {
-      path: opts.output || path.resolve(path.join('.', 'dist')),
+      path: opts.output || resolveApp('.', 'dist'),
       filename: 'app.js'
     },
     plugins: [
@@ -57,15 +60,13 @@ function config (opts) {
       rules: [    
         {
           test: /\.js$/,
-          use: 
-            {
-              loader: '@sucrase/webpack-loader',
-              include: resolveApp('src/app'),
-              options: {
-                transforms: ['jsx']
-              }
+          include: resolveApp('src/app'),
+          use: {
+            loader: '@sucrase/webpack-loader',
+            options: {
+              transforms: ['jsx']
             }
-          
+          }
         }
       ]
     }
