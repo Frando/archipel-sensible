@@ -16,7 +16,7 @@ const makeServer = require('./lib/http-server')
 //   .listen(8080) //the server object listens on port 8080
 
 if (process.env.NODE_ENV === 'development') {
-  //  bundler({ entry: './src/app/index.js' })
+  bundler({ entry: './src/app/index.js' })
 }
 
 // var childProcess = require('child_process').fork(__dirname + '/lib/bundler')
