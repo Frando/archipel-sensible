@@ -43,10 +43,11 @@ class HttpServer {
     })
   }
   
-  devtools () {
+  devtools (opts) {
     const fastifyWebpackHmr = require('fastify-webpack-hmr')
-    const { config } = require('./bundler')
-    this.fastify.register(fastifyWebpackHmr, { config: config() })
+    const { bundle, config } = require('./bundler')
+    bundle(opts)
+    this.fastify.register(fastifyWebpackHmr, { config: config(opts) })
   }
 
   get() {}

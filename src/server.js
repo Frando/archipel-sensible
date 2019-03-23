@@ -7,9 +7,7 @@ const makeServer = require('./lib/http-server')
 const server = makeServer()
 
 if (process.env.NODE_ENV === 'development') {
-  bundle({ entry: './src/app/index.js' })
-  server.devtools()
-  
+  server.devtools({ entry: './src/app/index.js' })
 }
 
 server.serveApp()

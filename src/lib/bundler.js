@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const LiveReloadPlugin = require('webpack-livereload-plugin')
+// const LiveReloadPlugin = require('webpack-livereload-plugin')
 const fs = require('fs')
 
 // bundle()
