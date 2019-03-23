@@ -1,0 +1,47 @@
+{
+  "name": "archipel-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "// start": "nodemon -V src/server.js --ignore 'dist/*' --ignore 'src/app/*' localhost 8080",
+    "start": "NODE_ENV=development node src/server.js"
+
+  },
+  "dependencies": {
+    "@sucrase/webpack-loader": "2.0.0",
+    "archipel": "github:arso-project/archipel",
+    "discovery-swarm-stream": "1.1.5",
+    "fastify": "2.1.0",
+    "fastify-static": "2.3.4",
+    "fastify-websocket": "0.3.0",
+    "html-webpack-plugin": "3.2.0",
+    "hyperdb": "3.5.0",
+    "hyperdiscovery": "8.0.0",
+    "hyperdrive": "9.14.3",
+    "module-alias": "2.2.0",
+    "random-access-file": "2.1.0",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "shallowequal": "1.1.0",
+    "sucrase": "3.10.0",
+    "webpack": "4.29.6",
+    "webpack-livereload-plugin": "2.2.0",
+    "websocket-stream": "5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  },
+  "keywords": [],
+  "nodemonConfig": {
+    "ignore": [
+      "dist/**",
+      "src/app/**"
+    ],
+    "verbose": true
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@archipel": "node_modules/archipel/packages"
+  }
+}
