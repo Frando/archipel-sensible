@@ -36,7 +36,7 @@ class HttpServer {
 
   serveApp() {
     let root = p.resolve(p.join('.', 'dist'))
-    console.log(root)
+    console.log('serving path: ', root)
     this.fastify.register(fastifyStatic, {
       root
       // prefix: '/public/', // optional: default '/'
@@ -47,6 +47,5 @@ class HttpServer {
 
   async start() {
     await this.fastify.listen(process.env.PORT || 8080)
-    console.log(this.fastify.server)
   }
 }
