@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 function App (props) {
   return (
     <div>
-      <h1>Hello, world! yaep </h1>,
+      <h1>Hello, world! yaep asaf</h1>,
     </div>
   )
 }

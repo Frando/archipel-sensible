@@ -4,8 +4,7 @@ const websocket = require('fastify-websocket')
 const p = require('path')
 const url = require('url')
 const http = require('http')
-   const fastifyWebpackHmr = require('fastify-webpack-hmr')
-    const { bundle, config, resolveApp } = require('./bundler')
+const { fastifyDevtools, resolveApp } = require('./bundler')
 
 module.exports = function makeServer(opts) {
   return new HttpServer(opts)
@@ -43,9 +42,7 @@ class HttpServer {
   }
   
   devtools (opts) {
- 
-    bundle(opts)
-    this.fastify.register(fastifyWebpackHmr, { config: config(opts) })
+    fastifyDevtools(this.fastify, opts)
   }
 
   get() {}

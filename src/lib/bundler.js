@@ -5,11 +5,18 @@ const CopyPlugin = require('copy-webpack-plugin');
 // const LiveReloadPlugin = require('webpack-livereload-plugin')
 const fs = require('fs')
 
+const HMR = require('fastify-webpack-hmr')
+
+function fastifyDevtools (fastify, opts) {
+  const compiler = opts.compiler || webpack(config(opts))
+  // bundle({ compiler })
+  fastify.register(HMR, { compiler })
+}
 // bundle()
 
 function bundle (opts) {
   console.log('>>> start bundle build')
-  const compiler = webpack(config(opts))
+  const compiler = opts.compiler || webpack(config(opts))
   if (opts.watch) {
     const watching = compiler.watch({
       aggregateTimeout: 300,
@@ -37,7 +44,7 @@ function bundle (opts) {
   }
 }
 
-module.exports = { bundle, config, resolveApp }
+module.exports = { bundle, config, resolveApp, fastifyDevtools }
 
 function resolveApp (subdir) {
   return path.resolve(path.join('.', subdir))
@@ -56,7 +63,7 @@ function config (opts) {
     output: {
       path: output,
       filename: 'app.js',
-      publicPath: '/',
+      publicPath: '/assets',
     },
     
     stats: false,
