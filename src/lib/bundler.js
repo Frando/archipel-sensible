@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin');
 // const LiveReloadPlugin = require('webpack-livereload-plugin')
 const fs = require('fs')
 
@@ -65,6 +66,9 @@ function config (opts) {
     plugins: [
       // new HtmlWebpackPlugin({ alwaysWriteToDisk: false }),
       // new LiveReloadPlugin(),
+      //new CopyPlugin([
+      //  { from: resolveApp('src/app/assets'), to: output },
+      //]),
       new webpack.HotModuleReplacementPlugin()
 
     ],

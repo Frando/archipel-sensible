@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-document.addEventListener("DOMContentLoaded", function() {
-  let el = document.createElement('div')
-  document.body.appendChild(el)
-  render(el)
-});
-
-function render (el) {
-  ReactDOM.render(
-    <h1>Hello, world! yaep foo</h1>,
-    el
-  );
+function App (props) {
+  return (
+    <div>
+      <h1>Hello, world! yaep </h1>,
+    </div>
+  )
 }
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
 
 // Reloads client script on update
 if (module.hot) {

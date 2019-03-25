@@ -2,6 +2,7 @@ dependencies:
   '@sucrase/webpack-loader': 2.0.0
   archipel: github.com/arso-project/archipel/eb1802d65ed967700f2cbae4395910f8e98c6105
   cache-loader: 2.0.1
+  copy-webpack-plugin: 5.0.2
   discovery-swarm-stream: 1.1.5
   fastify: 2.1.0
   fastify-static: 2.3.4
@@ -307,6 +308,20 @@ packages:
     dev: false
     resolution:
       integrity: sha1-DH4bTgIq4Wb/HoRIxZXzGB/NMzc=
+  /array-union/1.0.2:
+    dependencies:
+      array-uniq: 1.0.3
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=
+  /array-uniq/1.0.3:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-r2rId6Jcx/dOBYiUdThY39sk/bY=
   /array-unique/0.3.2:
     engines:
       node: '>=0.10.0'
@@ -860,6 +875,26 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+  /copy-webpack-plugin/5.0.2:
+    dependencies:
+      cacache: 11.3.2
+      find-cache-dir: 2.1.0
+      glob-parent: 3.1.0
+      globby: 7.1.1
+      is-glob: 4.0.0
+      loader-utils: 1.2.3
+      minimatch: 3.0.4
+      normalize-path: 3.0.0
+      p-limit: 2.2.0
+      serialize-javascript: 1.6.1
+      webpack-log: 2.0.0
+    dev: false
+    engines:
+      node: '>= 6.9.0'
+    peerDependencies:
+      webpack: ^4.0.0
+    resolution:
+      integrity: sha512-7nC7EynPrnBTtBwwbG1aTqrfNS1aTb9eEjSmQDqFtKAsJrR3uDb+pCDIFT2LzhW+SgGJxQcYzThrmXzzZ720uw==
   /core-util-is/1.0.2:
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
@@ -1046,6 +1081,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-kqag/Nl+f3GwyK25fhUMYj81BUOrZ9IuJsjIcDE5icNM9FJHAVm3VcUDxdLPoQtTuUylWm6ZIknYJwwaPxsUzg==
+  /dir-glob/2.2.2:
+    dependencies:
+      path-type: 3.0.0
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-f9LBi5QWzIW3I6e//uxZoLBlUt9kcp66qo0sSCxL6YZKc75R1c4MFCoe/LaZiBGmgujvQdxc5Bn3QhfyvK5Hsw==
   /discovery-channel/5.5.1:
     dependencies:
       bittorrent-dht: 7.10.0
@@ -1633,6 +1676,19 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-sxnA3UYH81PzvpzKTHL8FIxJ9EU=
+  /globby/7.1.1:
+    dependencies:
+      array-union: 1.0.2
+      dir-glob: 2.2.2
+      glob: 7.1.3
+      ignore: 3.3.10
+      pify: 3.0.0
+      slash: 1.0.0
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-+yzP+UAfhgCUXfral0QMypcrhoA=
   /got/6.7.1:
     dependencies:
       create-error-class: 3.0.2
@@ -1918,6 +1974,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-SMptcvbGo68Aqa1K5odr44ieKwk=
+  /ignore/3.3.10:
+    dev: false
+    resolution:
+      integrity: sha512-Pgs951kaMm5GXP7MOvxERINe3gsaVjUWFm+UZPSq9xYriQAksyhg0csnS0KXSNRD5NmNdapXEpjxG49+AKh/ug==
   /import-lazy/2.1.0:
     dev: true
     engines:
@@ -2899,6 +2959,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
+  /path-type/3.0.0:
+    dependencies:
+      pify: 3.0.0
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-T2ZUsdZFHgA3u4e5PfPbjd7HDDpxPnQb5jN0SrDsjNSuVXHJqtwTnWqG0B1jZrgmJ/7lj1EmVIByWt1gxGkWvg==
   /pbkdf2/3.0.17:
     dependencies:
       create-hash: 1.2.0
@@ -2912,7 +2980,6 @@ packages:
     resolution:
       integrity: sha512-U/il5MsrZp7mGg3mSQfn742na2T+1/vHDCG5/iTI3X9MKUuYUZVLQhyRsg06mCgDBTd57TxzgZt7P+fYfjRLtA==
   /pify/3.0.0:
-    dev: true
     engines:
       node: '>=4'
     resolution:
@@ -3468,6 +3535,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-dKKwjIoTOa587TARYLlBRXq2lkbu5Iz35XrEVWpelhBP1m8r2BGOy1QlaZe84GTFHG/BTucEUd2btnNc8QzIVA==
+  /slash/1.0.0:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
   /snapdragon-node/2.1.1:
     dependencies:
       define-property: 1.0.0
@@ -4332,6 +4405,7 @@ specifiers:
   '@sucrase/webpack-loader': 2.0.0
   archipel: 'github:arso-project/archipel'
   cache-loader: ^2.0.1
+  copy-webpack-plugin: ^5.0.2
   discovery-swarm-stream: 1.1.5
   fastify: 2.1.0
   fastify-static: 2.3.4
