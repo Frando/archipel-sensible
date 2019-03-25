@@ -63,7 +63,7 @@ function config (opts) {
     devtool: 'cheap-eval-source-map',
     
     plugins: [
-      new HtmlWebpackPlugin({ alwaysWriteToDisk: false }),
+      // new HtmlWebpackPlugin({ alwaysWriteToDisk: false }),
       // new LiveReloadPlugin(),
       new webpack.HotModuleReplacementPlugin()
 

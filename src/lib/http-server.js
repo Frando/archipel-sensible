@@ -40,6 +40,10 @@ class HttpServer {
     this.fastify.register(fastifyStatic, {
       root: resolveApp('build/dev')
     })
+    this.fastify.register(fastifyStatic, {
+      decorateReply: false,
+      root: resolveApp('src/app/assets')
+    })
   }
   
   devtools (opts) {
