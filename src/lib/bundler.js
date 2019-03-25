@@ -1,8 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin');
-// const LiveReloadPlugin = require('webpack-livereload-plugin')
 const fs = require('fs')
 
 const HMR = require('fastify-webpack-hmr')
@@ -26,7 +23,7 @@ function bundle (opts) {
   } else {
     compiler.run((err, stats) => printStats(stats))
   }
-  
+
   function printStats (stats) {
     print('build finished')
     print('time: %ss', (stats.endTime - stats.startTime) / 1000)
@@ -65,11 +62,11 @@ function config (opts) {
       filename: 'app.js',
       publicPath: '/build',
     },
-    
+
     stats: false,
     mode: 'development',
     devtool: 'cheap-eval-source-map',
-    
+
     plugins: [
       // new HtmlWebpackPlugin({ alwaysWriteToDisk: false }),
       // new LiveReloadPlugin(),
@@ -80,16 +77,21 @@ function config (opts) {
 
     ],
     module: {
-      rules: [    
+      rules: [
         {
           test: /\.js$/,
           include: resolveApp('src/app'),
           use: {
             loader: '@sucrase/webpack-loader',
             options: {
-              transforms: ['jsx']
+              transforms: ['jsx', 'react-hot-loader']
             }
           }
+        },
+        {
+          test: /\.jsx?$/,
+          include: /node_modules/,
+          use: ['react-hot-loader/webpack'],
         }
       ]
     }

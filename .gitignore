@@ -1,2 +1,5 @@
-dist
 build
+data
+node_modules
+.cache-loader
+package-lock.json
