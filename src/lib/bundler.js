@@ -63,7 +63,7 @@ function config (opts) {
     output: {
       path: output,
       filename: 'app.js',
-      publicPath: '/assets',
+      publicPath: '/build',
     },
     
     stats: false,

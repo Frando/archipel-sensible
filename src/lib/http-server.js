@@ -37,8 +37,14 @@ class HttpServer {
 
   serveApp() {
     this.fastify.register(fastifyStatic, {
-      root: resolveApp('build/dev')
+      root: resolveApp('public')
     })
+    //this.fastify.register(fastifyStatic, {
+    //  root: resolveApp('build/dev')
+    //})
+    //this.fastify.get('/index.html', (req, reply) => {
+    //  reply.sendFile(resolveApp('src/app/assets/index.html'))
+    //})
   }
   
   devtools (opts) {
